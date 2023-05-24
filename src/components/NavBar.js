@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Home from "../pages/Home";
-import Blog from "./Blog";
+import Blogs from "./Blogs";
+// import Blog from "./Blog";
 
 
 export default function NavBar() {
@@ -39,7 +40,7 @@ export default function NavBar() {
           </div>
         </div>
     </div>
-   <Blog />
+   <Blogs />
   </div> 
   )
 }

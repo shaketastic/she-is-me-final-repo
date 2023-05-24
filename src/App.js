@@ -29,7 +29,8 @@ function App() {
               <Route path="/blogs/login" element={<Login />} />
             </Routes>
           </main>
-        </Router>  </div>    
+        </Router>  
+    </div>    
     );
 }
   

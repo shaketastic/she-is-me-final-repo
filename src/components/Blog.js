@@ -1,15 +1,25 @@
-// import { Container } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-// export default function Blog( { blog } ) {
+function Blog({ blog }) {
+  return (
+    <tr>
+      <td>
+        {blog.is_anonymous ? (
+          <span>⭐️</span>
+        ) : (
+          <span>&nbsp; &nbsp; &nbsp;</span>
+        )}
+      </td>
+      <td>
+        <a href={blog.title} target="_blank" rel="noreferrer">
+          {blog.content}
+        </a>
+      </td>
+      <td>
+        <Link to={`/blogs/${blog.id}`}>✏️</Link>
+      </td>
+    </tr>
+  );
+}
 
-//   return (
-//    <Container>
-//      <span>{blog.is_anonymous ? '❤️' : null}</span>
-//      <Link to={`/blogs/${blog.id}`}>{blog.name}</Link>
-//      <Link to={`/blogs/${blog.id}`}>
-//      {/* <img className="rounded mx-auto d-block" src={blog.image} alt='snack' width='150' height='150'/> */}
-//      </Link>
-//    </Container>
-//   );
-// }
+export default Blog;

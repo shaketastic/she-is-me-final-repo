@@ -1,9 +1,9 @@
-
+import BlogEditForm from "../components/BlogEditForm";
 
 export default function Edit() {
   return (
-    <div>
-      Edit page
+    <div className="container">
+      <BlogEditForm />
     </div>
   )
 }

@@ -1,10 +1,10 @@
-import BlogDetails from "../components/BlogDetails"
+import BlogDetails from "../components/BlogDetails";
 
 export default function Show() {
     return (
-      <div>
-        Show Page
-        {/* <BlogDetails /> */}
+      <div className="container">
+        SHOW Page
+        <BlogDetails />
       </div>
     )
   }

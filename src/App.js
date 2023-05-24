@@ -10,6 +10,7 @@ import New from './pages/New';
 import Show from './pages/Show';
 import Register from './pages/Register';
 import NavBar from './components/NavBar';
+import Blogs from './components/Blogs';
 
 
 
@@ -20,7 +21,7 @@ function App() {
           <NavBar />
           <main>
             <Routes>
-              <Route path="/" element={<Home /> } />
+              <Route path="/" exact element={<Home />} />
               <Route path="/blogs" element={<Index />} /> 
               <Route path="/blogs/:id" element={<Show />} />
               <Route path="/blogs/new" element={<New />} />

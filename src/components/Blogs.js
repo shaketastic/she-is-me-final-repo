@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import Blog from "./Blog";
 
 export default function Blogs() {
  
@@ -117,7 +117,7 @@ export default function Blogs() {
                         </div>    
                         <div className="content">
                             <Link className="link" to={`/blogs/${blog.id}`}> 
-                            {/* /blogs/:id */}
+                            {/* {<Blog />}  */}
                                 <h1>{blog.title}</h1> 
                             </Link>
                                 <p>{blog.content}</p>

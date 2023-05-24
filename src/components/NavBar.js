@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import Home from "../pages/Home";
 import Blogs from "./Blogs";
-// import Blog from "./Blog";
+import Home from "../pages/Home";
 
 
 export default function NavBar() {
@@ -12,22 +11,22 @@ export default function NavBar() {
         <div className="logo">
         <div className="links">
 
-        <a href={<Home/>}>
-        <img src={logo} alt="girl"></img>
+        <a href={<Home />}>
+        <img src={logo} alt="logo"></img>
         </a>
-          <Link className="link" to="/?cat=bullying">
+          <Link className="link" to="/">
             <h6>BULLYING</h6>
           </Link>
 
-          <Link className="link" to="/?cat=prevention">
+          <Link className="link" to="/">
             <h6>PREVENTION</h6>
           </Link>
 
-          <Link className="link" to="/?cat=resources">
+          <Link className="link" to="/">
             <h6>RESOURCES</h6>
           </Link>
 
-          <Link className="link" to="/?cat=help">
+          <Link className="link" to="/">
             <h6>Get Help Now</h6>
           </Link>
 
@@ -40,7 +39,7 @@ export default function NavBar() {
           </div>
         </div>
     </div>
-   <Blogs />
+   {/* <Blogs /> */}
   </div> 
   )
 }

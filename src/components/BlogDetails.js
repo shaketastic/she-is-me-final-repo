@@ -1,102 +1,76 @@
-// import { useParams, Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { useState, useEffect } from "react";
-// import Container from 'react-bootstrap/Container';
-// import { Modal } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// const API = process.env.REACT_APP_API_URL;
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-// export default function BlogDetails() {
-//     const [ blog, setBlogs ] = useState([]);
-//     const [isOpen, setIsOpen] = useState(false);
+ const API = process.env.REACT_APP_API_URL
+
+function BlogDetails() {
+  const [blogs, setBlogs] = useState([]);
+  const {id} = useParams();
+  let navigate = useNavigate();
 
 
-//     const showModal = () => {
-//       setIsOpen(true);
-//     };
-  
-//     const hideModal = () => {
-//       setIsOpen(false);
-//     };
-
-//     const { id } = useParams();
-//     const navigate = useNavigate();
+  useEffect(() => {
+    axios.get(`${API}/blogs/${id}`)
+      .then((response) => {
+      console.log(response.data)
+      setBlogs(response.data)
+      }).catch((e) => {
+        console.warn("catch", e)
+      })
     
-//     useEffect(() => {
-//         axios
-//         .get(`${API}/blogs/${id}`)
-//         .then((res) => {
-//             setBlogs(res.data);
-//           }).catch((e) => {
-//             console.warn('catch', e)
-//           })
-//         }, [id]);
+  }, [id, API])
+
+  //delete
+  const deleteBlog = () => {
+    axios.delete(`${API}/blogs/${id}`)
+    .then(() => {
+      navigate(`/blogs`);
+    },
+    (error) => console.error(error)
+    )
+    .catch((c) => console.warn("catch", c));
+  }
+
+  const handleDelete = () => {
+    deleteBlog();
+  }
 
 
+  return (
+    <article>
+      <h3>{blogs.is_anonymous ? <span>⭐️</span> : null} {blogs.name}</h3>
+    <h5>
+      <span>
+          <a href={blogs.title}>{blogs.content}</a>
+      </span> {" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {blogs.title}
+    </h5>
+      <h6>{blogs.content}</h6>
+      <p>{blogs.age}</p>
+      
+      <div className="showNavigation">
 
-//     const deleteBlog = () => {
-//         axios.delete(`${API}/blogs/${id}`)
-//         .then(() => {
-//             navigate(`/blogs`);
-//         },
-//         (error) => console.error(error)
-//         )
-//         .catch((c) => console.warn('catch', c));
-//     };
+        <div>
+          {" "}
+          <Link to={`/blogs`} >
+          <button>Back</button>
+          </Link>
+        </div>
 
-//     const handleDelete = () => {
-//         deleteBlog();
-//     }
+        <div>
+          <Link to={`/blogs/${id}/edit`}>
+          <button>Edit</button>
+          </Link>
+        </div>
 
-//   return (
-//     <div className='blog-details'>
-//     <Container>
-//         <h2><span>{blog.is_anonymous ? '❤️' : null}</span>{blog.name}</h2>
-//         <ul>
-//         <li>
-//         <span><b>Title: </b>{blog.title}</span>
-//         </li>
-//         <li>
-//         <span><b>Name: </b>{blog.name}</span>
-//         </li>
-//         <li>
-//         <span><b>Age: </b>{blog.age}</span>
-//         </li>
-//         <li>
-//         <span><b>Content: </b>{blog.content}</span>
-//         </li>
-//         <li>
-//         <span><b>Created: </b>{blog.created_at}</span>
-//         </li>
-//         <li>
-//         <span>Are you anonymous?: {blog.is_anonymous ? <span>✅</span> : <span>❌</span>}</span>
-//         </li>
-//         </ul>
-    
-//       <div className="showNavigation">
-//         <div>
-//           {" "}
-//           <Link to={`/blogs`} >
-//           <button>BACK</button>
-//           </Link>
+        <div>
+          <button onClick={handleDelete}>Delete</button>
+        </div> 
+    </div>
 
-//           <Link to={`/blogs/${id}/edit`} >
-//           <button>EDIT</button>
-//           </Link>
-//           <button onClick={showModal}>DELETE</button>
-//         <Modal show={isOpen} onHide={hideModal}>
-//         <Modal.Header>
-//           <Modal.Title>Confirmation</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>Are you sure you want to delete this blog?</Modal.Body>
-//         <Modal.Footer>
-//           <button onClick={hideModal}>CANCEL</button>
-//           <button onClick={handleDelete}>DELETE</button>
-//         </Modal.Footer>
-//       </Modal>
-//         </div>
-//         </div>
-//     </Container>
-//   </div>
-//   );
-// };
+  </article>
+  );
+};
+
+export default BlogDetails;

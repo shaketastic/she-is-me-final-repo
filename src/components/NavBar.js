@@ -14,26 +14,26 @@ export default function NavBar() {
         <a href={<Home />}>
         <img src={logo} alt="logo"></img>
         </a>
-          <Link className="link" to="/">
+          <Link className="link" to="/?cat=bullying">
             <h6>BULLYING</h6>
           </Link>
 
-          <Link className="link" to="/">
+          <Link className="link" to="/?cat=prevention">
             <h6>PREVENTION</h6>
           </Link>
 
-          <Link className="link" to="/">
+          <Link className="link" to="/?cat=resources">
             <h6>RESOURCES</h6>
           </Link>
 
-          <Link className="link" to="/">
-            <h6>Get Help Now</h6>
+          <Link className="link" to="/?cat=help">
+            <h6>Get Help Now!</h6>
           </Link>
 
           <span>Username</span>
           <span>Logout</span>
           <span className="new">
-            <Link className="link" to="/new">Write Here</Link>
+            <Link className="link" to="blogs/new">Write Here</Link>
           </span>
 
           </div>

@@ -204,7 +204,7 @@ span {
     }
  }
 
-// SINGLE 
+// SINGLE  -- index
 
 .single {
     display: flex;
@@ -257,6 +257,10 @@ span {
       h1 {
         font-size: 20px;
         color: #555;
+      }
+      p {
+        text-align: justify;
+        line-height: 30px;
       }
 
       .post {
